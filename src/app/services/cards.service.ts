@@ -5,7 +5,7 @@ import 'rxjs/Rx';
 @Injectable()
 export class CardsService {
 
-  private apiUrl = 'http://localhost:8000/scrumboard/cards'
+  private apiUrl = 'http://localhost:8000/scrumboard/cards';
 
   constructor(private http: Http) { }
 
