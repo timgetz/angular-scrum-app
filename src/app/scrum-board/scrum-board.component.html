@@ -1,0 +1,9 @@
+<div>
+  <button (click)="onGetCardsComplexObjectExample()">Get Cards</button>
+</div>
+<div *ngIf="cards.length > 0">
+  <h3>Card Titles from Django REST Service</h3>
+  <ul>
+    <li *ngFor="let card of cards">{{card}}</li>
+  </ul>
+</div>
