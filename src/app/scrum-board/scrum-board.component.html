@@ -1,9 +1,16 @@
 <div>
+  <label for="title"></label>
+  <input type="text" id="title" #title>
+  <button (click)="onAddCard(title.value)">Title</button>
+</div>
+
+<div>
   <button (click)="onGetCards()">Get Cards</button>
 </div>
 <div *ngIf="cards.length > 0">
   <h3>Card Titles from Django REST Service</h3>
   <ul>
-    <li *ngFor="let card of cards">{{card}}</li>
+    <!--<li *ngFor="let card of cards">{{card.title}}</li>-->
+    <sb-card-item *ngFor="let card of cards; let i = index" [card]="card" [cardId]="i"></sb-card-item>
   </ul>
 </div>

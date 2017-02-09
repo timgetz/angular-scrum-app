@@ -6,11 +6,13 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { ScrumBoardComponent } from './scrum-board/scrum-board.component';
 import {CardsService} from "./services/cards.service";
+import { CardItemComponent } from './card-item/card-item.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ScrumBoardComponent
+    ScrumBoardComponent,
+    CardItemComponent
   ],
   imports: [
     BrowserModule,
