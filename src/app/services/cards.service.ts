@@ -3,11 +3,12 @@ import {Http, Response, Headers} from "@angular/http";
 import 'rxjs/Rx';
 import {Observable} from "rxjs";
 import {Card} from "../shared/card";
+import {CardList} from "../shared/card-list";
 
 @Injectable()
 export class CardsService {
 
-  private apiUrl = 'http://localhost:8000/scrumboard/cards/';
+  private apiUrl = 'http://localhost:8000/scrumboard/lists/';
 
   constructor(private http: Http) { }
 
@@ -21,12 +22,24 @@ export class CardsService {
     return this.http.get(this.apiUrl)
       .map((response: Response) => { return response.json()})
       .map( data  => {
-        let results: Array<Card> = [];
-        for (let i = 0; i < data.length; i++) {
-          let test = data[i];
-          results.push(new Card(data[i].title, '', 1, 1, 1))
+        let cardLists: Array<CardList> = [];
+        for (let li = 0; li < data.length; li++) {
+          let cards: Array<Card> = [];
+
+          let tempCards = data[li].cards;
+
+          for (let ci = 0; ci < tempCards.length; ci++) {
+            cards.push(new Card(tempCards[ci].title,
+              tempCards[ci].description,
+              tempCards[ci].businessValue,
+              tempCards[ci].listId,
+              tempCards[ci].storyPoints))
+          }
+
+          cardLists.push(new CardList(data[li].name, cards));
         }
-        return results;
+
+        return cardLists;
       })
       .catch(this.handleError);
   }

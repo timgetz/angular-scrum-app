@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {CardsService} from "../services/cards.service";
-import {Card} from "../shared/card";
+import {CardList} from "../shared/card-list";
 
 @Component({
   selector: 'sb-scrum-board',
@@ -9,7 +9,7 @@ import {Card} from "../shared/card";
 })
 export class ScrumBoardComponent implements OnInit {
 
-  cards : Array<Card> = [];
+  cardLists : Array<CardList> = [];
 
   constructor(private cardsService : CardsService) { }
 
@@ -20,7 +20,7 @@ export class ScrumBoardComponent implements OnInit {
   onGetCards() {
     this.cardsService.getCards()
       .subscribe(
-        result => this.cards = result
+        result => this.cardLists = result
       )
   }
 

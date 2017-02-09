@@ -7,10 +7,17 @@
 <div>
   <button (click)="onGetCards()">Get Cards</button>
 </div>
-<div *ngIf="cards.length > 0">
+<div *ngIf="cardLists.length > 0">
   <h3>Card Titles from Django REST Service</h3>
-  <ul>
-    <!--<li *ngFor="let card of cards">{{card.title}}</li>-->
-    <sb-card-item *ngFor="let card of cards; let i = index" [card]="card" [cardId]="i"></sb-card-item>
-  </ul>
+
+    <div *ngFor="let cardList of cardLists; let cli = index">
+
+      <h3>{{cardList.name}}</h3>
+
+      <ul *ngIf="cardList.cards.length > 0">
+        <sb-card-item *ngFor="let card of cardList.cards; let i = index" [card]="card" [cardId]="i"></sb-card-item>
+      </ul>
+    </div>
+
+
 </div>
