@@ -11,13 +11,13 @@ export class CardsService {
 
   constructor(private http: Http) { }
 
-  // public getData() {
+  // public getCards() {
   //   return this.http.get(this.apiUrl)
   //     .map((response: Response) => response.json())
   //     .catch(this.handleError);
   // }
 
-  public getData() {
+  public getCards() {
     return this.http.get(this.apiUrl)
       .map((response: Response) => { return response.json()})
       .map( data  => {

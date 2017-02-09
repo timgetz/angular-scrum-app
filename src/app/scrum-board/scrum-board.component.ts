@@ -18,14 +18,14 @@ export class ScrumBoardComponent implements OnInit {
   }
 
   onGetCards() {
-    this.cardsService.getData()
+    this.cardsService.getCards()
       .subscribe(
         result => this.cards = result
       )
   }
 
   // onGetCards() {
-  //   this.cardsService.getData().subscribe(
+  //   this.cardsService.getCards().subscribe(
   //     data => {
   //       const myArray = [];
   //       for (let key in data) {
